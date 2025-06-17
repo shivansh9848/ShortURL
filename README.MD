@@ -1,9 +1,8 @@
-<h1 align="center">ShortURL: A URL Shortening service 🔗</h1>
-
+<h1 align="center">URLink: A URL Shortening service 🔗</h1>
 
 ## 📚 | Introduction
 
-- ShortURL is a distributed and highly available URL Shortening service, built on the MERN stack.
+- URLink is a distributed and highly available URL Shortening service, built on the MERN stack.
 - It uses Redis as a cache, and MongoDB as a NoSQL database.
 - It uses Nginx that acts as a load balancer, and a reverse proxy for the backend server.
 - It uses Apache ZooKeeper to provide tokens for hash generation, and eliminates race conditions between nodes.
@@ -17,15 +16,15 @@
 - Clone this repository:<br>
 
 ```sh
-git clone https://github.com/muKaustav/ShortURL.git
+git clone https://github.com/shivansh9848/ShortURL.git
 ```
 
 - Create a .env file with the following variables:
 
 ```js
-REACT_APP_MONGODB_URI="<enter your MongoDB URI>"
-REACT_APP_REDIS_PORT=1111
-REACT_APP_REDIS_HOST='redis-server' 
+REACT_APP_MONGODB_URI = "<enter your MongoDB URI>";
+REACT_APP_REDIS_PORT = 1111;
+REACT_APP_REDIS_HOST = "redis-server";
 ```
 
 - Open the project folder and start the container with docker compose:<br>
@@ -35,6 +34,7 @@ docker compose up --build
 
 Example: docker compose up --build --scale node-server=3
 ```
+
 - Enjoy the project! 😉
 
 <br/>
@@ -53,18 +53,7 @@ Access the API using the following URLs:
     Client: http://localhost:3000/
     Load Balanced Server: http://localhost:4000/
 ```
-
-
-
-## 📘 | System Design Schematic
-
-<p align = center>
-    <img alt="getURL" src="https://raw.githubusercontent.com/muKaustav/ShortURL/master/client/src/assets/images/getURLs.png" target="_blank" />
-    <img alt="redirect" src="https://raw.githubusercontent.com/muKaustav/ShortURL/master/client/src/assets/images/redirect.png" target="_blank" />
-</p>
-
 <br/>
-
 
 ## 💻 | References
 
@@ -79,7 +68,3 @@ Access the API using the following URLs:
 - [Kompose Documentation](https://kompose.io/user-guide/)
 
 <br/>
-
-
-
-
