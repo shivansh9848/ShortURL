@@ -17,7 +17,7 @@ function Footer() {
 				</a>
 			</div>
 			<div className="item">
-				<h1>Made with ❤️ by kauC</h1>
+				<h1>Made with ❤️ by Shivansh</h1>
 			</div>
 			<div className="socials">
 				<a href="https://github.com/shivansh9848" target="_blank" rel="noreferrer">
