@@ -10,5 +10,4 @@ function UrlBox(props) {
 		</div>
 	)
 }
-
 export default UrlBox
