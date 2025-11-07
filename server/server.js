@@ -1,28 +1,27 @@
 require("dotenv").config();
-const cors = require('cors')
-const express = require('express')
-const mainRoute = require('./src/routes/main')
-const purgeAliases = require('./src/workers/purgeAliases')
-require('./src/helpers/mongodb').connectDB()
-require('./src/helpers/redis').connectRedis()
-require('./src/helpers/zookeeper').connectZK()
+const cors = require("cors");
 
-const app = express()
+const express = require("express");
+const mainRoute = require("./src/routes/main");
+const purgeAliases = require("./src/workers/purgeAliases");
+const connectDB = require("./src/helpers/mongodb").connectDB;
+const redisClient = require("./src/helpers/redis").client;
 
-app.use(cors())
-app.use(express.json())
+connectDB(); // MongoDB
+redisClient.on("connect", () => console.log("✅ Redis connected"));
 
-app.use('/', mainRoute)
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-app.get('*', (req, res) => {
-    res.send("<h1>404 Not Found</h1>")
-})
+app.use("/", mainRoute);
 
-PORT = process.env.PORT || 8081
+app.get("*", (req, res) => {
+  res.send("<h1>404 Not Found</h1>");
+});
 
+const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
-    console.log(`App started on port ${PORT}`)
-    purgeAliases()
-})
-
-// docker compose up --build --scale node-server=3
+  console.log(`App started on port ${PORT}`);
+  purgeAliases(); // run your cleanup worker safely
+});

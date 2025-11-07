@@ -1,11 +1,9 @@
 import axios from "axios";
 
-let api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:4000",
+const api = axios.create({
+  baseURL: "/api", // <-- NGINX will proxy this to node-server:8081
 });
 
 export const postURL = (input) => api.post("/url", { OriginalUrl: input });
 
-let apis = { postURL };
-
-export default apis;
+export default { postURL };
