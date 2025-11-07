@@ -1,3 +1,4 @@
+require("dotenv").config();
 const cors = require('cors')
 const express = require('express')
 const mainRoute = require('./src/routes/main')
@@ -13,7 +14,7 @@ app.use(express.json())
 
 app.use('/', mainRoute)
 
-app.get("/{*any}", (req, res) => {
+app.get('*', (req, res) => {
     res.send("<h1>404 Not Found</h1>")
 })
 
