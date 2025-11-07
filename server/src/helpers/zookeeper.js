@@ -16,16 +16,15 @@ let range = {
 let isConnected = false;
 
 let hashGenerator = (n) => {
-  hash = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  hash_str = "";
-
+  const base62 = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let s = "";
   while (n > 0) {
-    hash_str += hash[n % 62];
+    s = base62[n % 62] + s;
     n = Math.floor(n / 62);
   }
-
-  return hash_str;
+  return s || "0"; 
 };
+
 
 let setTokenRange = async (token) => {
   let dataToSet = Buffer.from(String(token), "utf8");
